@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Roshan's Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: darkblue;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .hidden {
+            display: none;
+        }
+        #countdownMessage, #finalMessage {
+            font-size: 24px;
+            font-weight: bold;
+            color: darkblue;
+        }
+        #finalMessage {
+            color: darkred;
+        }
+    </style> 
+</head>
+<body>
+    <h1>Welcome to Roshan's Site</h1>
+    <button id="mysteryButton" onclick="startCountdown()">Mystery</button>
+
+    <!-- Countdown and Final Message -->
+    <p id="countdownMessage" class="hidden">Starting in <span id="countdown">10</span> seconds...</p>
+    <p id="finalMessage" class="hidden">Here is nothing, leave now.</p>
+
+    <script>
+        let countdownValue = 10;
+        let countdownInterval;
+
+        // Function to start the countdown
+        function startCountdown() {
+            document.getElementById('mysteryButton').style.display = 'none';  // Hide the button
+            document.getElementById('countdownMessage').classList.remove('hidden');  // Show countdown message
+            
+            countdownInterval = setInterval(function() {
+                countdownValue--;
+                document.getElementById('countdown').textContent = countdownValue;  // Update countdown number
+
+                if (countdownValue <= 0) {
+                    clearInterval(countdownInterval);  // Stop the countdown
+                    document.getElementById('countdownMessage').classList.add('hidden');  // Hide countdown message
+                    document.getElementById('finalMessage').classList.remove('hidden');  // Show final message
+                }
+            }, 1000);  // Decrease the countdown every second
+        }
+    </script>
+</body>
+</html>
